@@ -30,8 +30,8 @@ public class UserOrderDto extends UserDto{
     private List<OrderDto> orders;
 
     public static UserOrderDto of(Users user) {
-        UserOrderDto UserOrderDto = ModelMapperUtil.getMapper().map(user, UserOrderDto.class);
         List<OrderDto> ordersList = new ArrayList<>();
+        UserOrderDto UserOrderDto = ModelMapperUtil.getMapper().map(user, UserOrderDto.class);
         for (Orders orders1 : user.getOrders()) {
             OrderDto orderDto = new OrderDto();
             if(orders1.getOrdersPK() == null) continue;

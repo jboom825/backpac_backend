@@ -1,10 +1,13 @@
 package com.backpac.dto;
 
 
+import com.backpac.entity.Users;
+import com.backpac.util.ModelMapperUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 /**
  * <pre>
@@ -27,4 +30,8 @@ public class UserDto {
     private String phoneNumber;
     private String email;
     private String sex;
+
+    public static UserDto of(Users user) {
+        return ModelMapperUtil.getMapper().map(user, UserDto.class);
+    }
 }

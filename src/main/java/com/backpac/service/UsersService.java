@@ -19,7 +19,7 @@ import java.util.List;
 public interface UsersService {
     void logout(String token);
     UserDto insertUser(UserDto user);
-    UserOrderDto selectUser(String id);
+    UserDto selectUser(String id);
     List<OrderDto> selectUserOrders(String id);
     List<UserOrderDto> selectAllUsers(int page, String name, String email);
 }

@@ -57,7 +57,7 @@ public class UsersController {
      * @author 김재범
      **/
     @RequiredAuthorization
-    @PostMapping(value = "/logout")
+    @GetMapping(value = "/logout")
     @ApiOperation(value = "로그아웃", notes = "로그아웃 API")
     @ResponseBody
     public CommonDto logout(HttpServletRequest request) {
@@ -92,9 +92,9 @@ public class UsersController {
      * @author 김재범
      **/
     @RequiredAuthorization
-    @GetMapping(value="/user/info/{userId}")
+    @GetMapping(value="/user/{id}/info")
     @ApiOperation(value = "단일 회원 상세 정보조회", notes = "단일 회원 상세 정보조회 API")
-    public UserOrderDto getUserInfo(@PathVariable("userId") String id) {
+    public UserDto getUserInfo(@PathVariable("id") String id) {
         return usersService.selectUser(id);
     }
 
@@ -108,9 +108,9 @@ public class UsersController {
      * @author 김재범
      **/
     @RequiredAuthorization
-    @GetMapping(value="/user/order/{userId}")
+    @GetMapping(value="/user/{id}/order")
     @ApiOperation(value = "단일 회원 주문 정보조회", notes = "단일 회원 주문 정보조회 API")
-    public List<OrderDto> getUserInfoOrder(@PathVariable("userId") String id) {
+    public List<OrderDto> getUserInfoOrder(@PathVariable("id") String id) {
         return usersService.selectUserOrders(id);
     }
 

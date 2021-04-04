@@ -99,8 +99,8 @@ public class UsersServiceImpl implements UsersService {
      * @author 김재범
      **/
     @Override
-    public UserOrderDto selectUser(String id) {
-        return UserOrderDto.of(repository.findById(id).orElseThrow(UserNotFoundException::new));
+    public UserDto selectUser(String id) {
+        return UserDto.of(repository.findById(id).orElseThrow(UserNotFoundException::new));
     }
 
     /**
