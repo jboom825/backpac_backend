@@ -86,7 +86,7 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public UserDto insertUser(UserDto user) {
         if(repository.findById(user.getId()).isPresent()) {
-            throw new AlreadyExistUserException();
+            throw new AlreadyExistUserException("이미 존재하는 사용자입니다.");
         }
 
         user.setPwd(bCryptPasswordEncoder.encode(user.getPwd()));
