@@ -21,7 +21,7 @@ public class ErrorResponseDto extends CommonDto{
     private String errorMessage;
 
     public ErrorResponseDto(String errorCode, String errorMessage) {
-        super(errorCode, "");
+        super(errorCode, errorMessage);
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }
