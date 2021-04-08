@@ -20,9 +20,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -82,6 +84,10 @@ public class UsersServiceImpl implements UsersService {
      **/
     @Override
     public UserDto insertUser(UserDto user) {
+        if(!repository.findById(user.getId()).isPresent()) {
+            throw new UserNotFoundException();
+        }
+
         user.setPwd(bCryptPasswordEncoder.encode(user.getPwd()));
         log.debug("USER:"+user);
         repository.save(Users.of(user));
