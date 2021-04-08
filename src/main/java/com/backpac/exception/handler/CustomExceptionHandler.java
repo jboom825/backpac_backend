@@ -45,8 +45,8 @@ public class CustomExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<?> handleException(HttpServletRequest request, Exception ex) {
         log.info("==================================== ex:"+ex);
-        ErrorResponseDto response = ErrorResponseDto.of(String.valueOf(HttpStatus.BAD_REQUEST.value()), ex.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        ErrorResponseDto response = ErrorResponseDto.of(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()), ex.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /**

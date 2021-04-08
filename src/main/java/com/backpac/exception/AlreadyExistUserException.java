@@ -12,7 +12,13 @@ package com.backpac.exception;
  **/
 public class AlreadyExistUserException extends RuntimeException {
 
+    private final String ERROR_MESSAGE = "이미 존재하는 사용자입니다.";
+
     public AlreadyExistUserException() {
-        super();
+        new AlreadyExistUserException(ERROR_MESSAGE);
+    }
+
+    public AlreadyExistUserException(String message) {
+        super(message);
     }
 }

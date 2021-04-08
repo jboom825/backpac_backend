@@ -5,6 +5,7 @@ import com.backpac.dto.UserDto;
 import com.backpac.entity.Orders;
 import com.backpac.entity.Users;
 import com.backpac.dto.UserOrderDto;
+import com.backpac.exception.AlreadyExistUserException;
 import com.backpac.exception.UserNotFoundException;
 import com.backpac.repository.UsersRepository;
 import com.backpac.service.UsersService;
@@ -84,8 +85,8 @@ public class UsersServiceImpl implements UsersService {
      **/
     @Override
     public UserDto insertUser(UserDto user) {
-        if(!repository.findById(user.getId()).isPresent()) {
-            throw new UserNotFoundException();
+        if(repository.findById(user.getId()).isPresent()) {
+            throw new AlreadyExistUserException();
         }
 
         user.setPwd(bCryptPasswordEncoder.encode(user.getPwd()));
